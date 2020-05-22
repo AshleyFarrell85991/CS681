@@ -1,0 +1,47 @@
+<project name="CS681Hw10AF" default="jrun" basedir=".">
+
+
+
+	
+   <property environment="env"/>
+ <path id="test.classpath">
+        <pathelement location ="test/bin"/>
+        <pathelement location="main/bin"/>
+<pathelement path = "${env.JUNIT}" />
+    </path>
+
+    <target name="build" description="clean build" depends="clean" />
+
+    <target name="clean">
+        <delete dir="build"/>
+
+    	 <delete dir="main/bin"/>
+
+
+    </target>
+
+    <target name="init">
+        <mkdir dir="main/bin"/>
+
+    </target>
+
+    <target name="compile" depends="init">
+        <javac destdir="main/bin" srcdir="src" includeantruntime="true"/>
+      
+    </target>
+
+
+
+	<target name="jrun" depends="compile">
+	 <java classname="ConcurrentSingleton">
+	<classpath path="main/bin"></classpath>
+	</java>
+
+
+	</target>
+
+	
+	
+	
+
+</project>
